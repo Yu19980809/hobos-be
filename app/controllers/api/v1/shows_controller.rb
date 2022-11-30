@@ -1,4 +1,6 @@
 class Api::V1::ShowsController < Api::V1::BaseController
+  before_action :set_show, only: %i[show destroy]
+
   def index
     if params[:query]
       sql_query = <<~SQL
@@ -16,7 +18,6 @@ class Api::V1::ShowsController < Api::V1::BaseController
   end
 
   def show
-    @show = Show.find(params[:id])
     render json: { show: @show }
   end
 
@@ -31,7 +32,16 @@ class Api::V1::ShowsController < Api::V1::BaseController
     end
   end
 
+  def destroy
+    @show.destroy
+    render json: { data: "deleted successfully" }
+  end
+
   private
+
+  def set_show
+    @show = Show.find(params[:id])
+  end
 
   def show_params
     params.require(:show).permit(:name, :description, :poster_url, :address, :time, :comedian)
