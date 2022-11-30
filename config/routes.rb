@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       post 'login', to: 'sessions#login', as: :login
       resources :shows, only: %i[index show create destroy]
       resources :users, only: %i[show update]
+      resources :bookings, only: %i[create]
     end
   end
 end
