@@ -18,12 +18,7 @@ class Api::V1::ShowsController < Api::V1::BaseController
   end
 
   def show
-    members = []
-    @show.bookings.each do |booking|
-      members.unshift(booking.User)
-    end
-
-    render json: { show: @show, members: }
+    render json: { show: @show, members: @show.users }
   end
 
   def create

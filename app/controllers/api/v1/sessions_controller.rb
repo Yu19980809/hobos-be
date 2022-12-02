@@ -4,6 +4,7 @@ class Api::V1::SessionsController < Api::V1::BaseController
   def login
     open_id = fetch_open_id
     user =  User.find_or_create_by(open_id:)
+    user_info(user)
     token = fetch_jwt_token(user)
 
     response.set_header('Authorization', token)
@@ -35,5 +36,12 @@ class Api::V1::SessionsController < Api::V1::BaseController
     # Create a JWT with user's information
     payload = {user_id: user.id}
     JWT.encode(payload, HMAC_SECRET, 'HS256')
+  end
+
+  def user_info(user)
+    user.name = "路人甲" if user.name.nil?
+    user.role = "audience" if user.role.nil?
+    user.avatar_url = "https://media.istockphoto.com/id/1401980646/photo/3d-rendered-classic-sculpture-metaverse-avatar-with-network-of-low-poly-glowing-purple-lines.jpg?b=1&s=170667a&w=0&k=20&c=nLf9fDcHVLZ9bPijP5QQrj0apVLdPXITVF6EAMqj1rg=" if user.avatar_url.nil?
+    user.save
   end
 end
