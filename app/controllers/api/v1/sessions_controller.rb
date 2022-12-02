@@ -41,7 +41,7 @@ class Api::V1::SessionsController < Api::V1::BaseController
   def user_info(user)
     user.name = "路人甲" if user.name.nil?
     user.role = "audience" if user.role.nil?
-    user.avatar_url = "https://media.istockphoto.com/id/1401980646/photo/3d-rendered-classic-sculpture-metaverse-avatar-with-network-of-low-poly-glowing-purple-lines.jpg?b=1&s=170667a&w=0&k=20&c=nLf9fDcHVLZ9bPijP5QQrj0apVLdPXITVF6EAMqj1rg=" if user.avatar_url.nil?
+    user.avatar_url = "http://chuantu.xyz/t6/742/1669965816x2890373782.png" if user.avatar_url.nil?
     user.save
   end
 end

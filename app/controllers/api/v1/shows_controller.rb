@@ -7,14 +7,14 @@ class Api::V1::ShowsController < Api::V1::BaseController
         name ILIKE :query
         OR description ILIKE :query
         OR address ILIKE :query
-        OR comedian_name ILIKE :query
+        OR club_name ILIKE :query
       SQL
       @shows = Show.where(sql_query, query: "%#{params[:query]}%")
     else
       @shows = Show.all
     end
 
-    render json: { shows: @shows }
+    render json: { shows: @shows.reverse }
   end
 
   def show
@@ -23,7 +23,7 @@ class Api::V1::ShowsController < Api::V1::BaseController
 
   def create
     @show = Show.new(show_params)
-    @show.user = User.find(params[:user_id])
+    @show.comedian_name = User.find(params[:user_id])
 
     if @show.save
       render json: { show: @show }
@@ -44,6 +44,6 @@ class Api::V1::ShowsController < Api::V1::BaseController
   end
 
   def show_params
-    params.require(:show).permit(:name, :description, :poster_url, :address, :time, :comedian)
+    params.require(:show).permit(:name, :description, :poster_url, :address, :time, :date, :club_name, :organizer_name)
   end
 end

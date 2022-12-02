@@ -1,9 +1,10 @@
 class Api::V1::BookingsController < Api::V1::BaseController
   def index
     @user = User.find(params[:user_id])
-    @bookings = Booking.where(user: @user)
+    # @bookings = Booking.where(user: @user)
+    @shows = @user.shows
 
-    render json: { bookings: @bookings }
+    render json: { shows: @shows }
   end
 
   def create
