@@ -31,7 +31,7 @@ puts "\n"
 
 puts "adding new shows..."
 
-Show.create(name: "新人赛", description: "仅限新人", poster_url: "https://images.unsplash.com/photo-1580130601254-05fa235abeab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHBvc3RlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60", address: "延平路425", club_name: "俱乐部A", date: "12/02/2022", time: "7:00 PM", comedian_name: "一号嘉宾", organizer_name: "路人乙")
-Show.create(name: "爆梗赛", description: "娱乐至上", poster_url: "https://images.unsplash.com/photo-1562448079-b5631888445f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHBvc3RlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60", address: "中山南路", club_name: "喜剧联合国", date: "12/04/2022", time: "7:30 PM", comedian_name: "二号嘉宾", organizer_name: "路人乙")
+Show.create(name: "新人赛", description: "仅限新人", poster_url: "https://images.unsplash.com/photo-1580130601254-05fa235abeab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHBvc3RlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60", address: "延平路425", club_name: "俱乐部A", date: "12/02/2022", time: "19:00", comedian_name: "一号嘉宾", organizer_name: "路人乙")
+Show.create(name: "爆梗赛", description: "娱乐至上", poster_url: "https://images.unsplash.com/photo-1562448079-b5631888445f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHBvc3RlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60", address: "中山南路", club_name: "喜剧联合国", date: "12/04/2022", time: "19:30", comedian_name: "二号嘉宾", organizer_name: "路人乙")
 
 puts "finished adding, #{Show.count} shows have been added."
