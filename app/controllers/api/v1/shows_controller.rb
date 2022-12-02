@@ -7,7 +7,7 @@ class Api::V1::ShowsController < Api::V1::BaseController
         name ILIKE :query
         OR description ILIKE :query
         OR address ILIKE :query
-        OR comedian ILIKE :query
+        OR comedian_name ILIKE :query
       SQL
       @shows = Show.where(sql_query, query: "%#{params[:query]}%")
     else
@@ -18,7 +18,12 @@ class Api::V1::ShowsController < Api::V1::BaseController
   end
 
   def show
-    render json: { show: @show }
+    members = []
+    @show.bookings.each do |booking|
+      members.unshift(booking.User)
+    end
+
+    render json: { show: @show, members: }
   end
 
   def create
