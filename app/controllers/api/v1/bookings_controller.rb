@@ -1,9 +1,10 @@
 class Api::V1::BookingsController < Api::V1::BaseController
   def index
     @user = User.find(params[:user_id])
-    @bookings = Booking.where(user: @user)
+    # @bookings = Booking.where(user: @user)
+    @shows = @user.shows
 
-    render json: { bookings: @bookings }
+    render json: { shows: @shows }
   end
 
   def create
@@ -18,7 +19,9 @@ class Api::V1::BookingsController < Api::V1::BaseController
   end
 
   def destroy
-    @booking = Booking.find(params[:id])
+    show_id = params[:show_id]
+    user_id = params[:user_id]
+    @booking = Booking.find_by(user_id:, show_id:)
     @booking.destroy
 
     render json: { data: "deleted successfully" }

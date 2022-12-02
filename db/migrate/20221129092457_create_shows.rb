@@ -5,9 +5,11 @@ class CreateShows < ActiveRecord::Migration[7.0]
       t.string :description
       t.string :poster_url
       t.string :address
-      t.time :time
-      t.string :comedian
-      t.references :user, null: false, foreign_key: true
+      t.string :club_name
+      t.string :date
+      t.string :time
+      t.string :comedian_name
+      t.string :organizer_name
 
       t.timestamps
     end
